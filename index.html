@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Servigo - Servicio de Limpieza Doméstica para Jóvenes Profesionales</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#4CAF50",
+            secondary: "#FF9800",
+            neutral: "#9E9E9E",
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+    }
+    .hero-section {
+      background: linear-gradient(
+        135deg,
+        rgba(76, 175, 80, 0.8) 0%,
+        rgba(255, 152, 0, 0.8) 100%
+      );
+      color: white;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    }
+    .btn-primary {
+      background: linear-gradient(45deg, #4caf50, #ff9800);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    .floating-action {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #4caf50;
+      color: white;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .floating-action:hover {
+      transform: scale(1.1);
+    }
+    input,
+    select,
+    textarea {
+      transition: border-color 0.3s ease;
+    }
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #4caf50;
+      outline: none;
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+  <!-- Header -->
+  <header class="bg-white shadow-md sticky top-0 z-10">
+    <nav
+      class="container mx-auto px-4 py-4 flex justify-between items-center"
+    >
+      <div class="flex items-center space-x-2">
+        <div
+          class="w-10 h-10 bg-primary rounded-full flex items-center justify-center"
+        >
+          <i class="fas fa-home text-white"></i>
+        </div>
+        <h1 class="text-2xl font-bold text-gray-800">Servigo</h1>
+      </div>
+      <div class="hidden md:flex space-x-6">
+        <a href="#home" class="text-gray-700 hover:text-primary transition"
+          >Inicio</a
+        >
+        <a href="#services" class="text-gray-700 hover:text-primary transition"
+          >Servicios</a
+        >
+        <a href="#register" class="text-gray-700 hover:text-primary transition"
+          >Registro</a
+        >
+        <a
+          href="#how-it-works"
+          class="text-gray-700 hover:text-primary transition"
+          >Cómo Funciona</a
+        >
+      </div>
+      <button id="menuToggle" class="md:hidden">
+        <i class="fas fa-bars text-xl"></i>
+      </button>
+    </nav>
+    <div id="mobileMenu" class="md:hidden bg-white border-t hidden">
+      <a
+        href="#home"
+        class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+        >Inicio</a
+      >
+      <a
+        href="#services"
+        class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+        >Servicios</a
+      >
+      <a
+        href="#register"
+        class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+        >Registro</a
+      >
+      <a
+        href="#how-it-works"
+        class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+        >Cómo Funciona</a
+      >
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero-section py-20">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-4xl md:text-6xl font-extrabold mb-6">
+        Servicio de Limpieza Doméstica Confiable para Jóvenes Profesionales
+      </h2>
+      <p class="text-xl mb-10">
+        Conecta empleadas domésticas verificadas con personas jóvenes que
+        buscan ayuda en el hogar en Mendoza. Construyendo confianza y
+        facilitando el trabajo formal.
+      </p>
+      <button class="btn-primary text-xl font-semibold" onclick="showRegisterSection()">
+        ¡Regístrate Ahora!
+      </button>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h3 class="text-3xl font-bold text-center mb-12 text-gray-800">
+        Nuestro Servicio
+      </h3>
+      <div class="max-w-md mx-auto">
+        <div class="card p-6 text-center">
+          <img
+            src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a533e5c7-fe8a-4ad0-a8bf-48f2cca68e3f.png"
+            alt="Ilustración animada de una mujer limpiando una sala de estar moderna con muebles verdes y amarillos, en estilo cartoon con detalles realistas de productos de limpieza y superficies brillantes"
+            class="w-full h-48 object-cover rounded-lg mb-4"
+          />
+          <h4 class="text-xl font-semibold mb-4">Limpieza del Hogar</h4>
+          <p class="text-gray-600">
+            Empleadas expertas en limpieza profunda y mantenimiento diario de tu
+            hogar.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Register Section -->
+  <section id="register" class="py-16">
+    <div class="container mx-auto px-4">
+      <h3 class="text-3xl font-bold text-center mb-12 text-gray-800">
+        Regístrate en Servigo
+      </h3>
+      <div class="max-w-lg mx-auto">
+        <!-- Register as Worker -->
+        <div class="card p-6 mb-12">
+          <h4 class="text-xl font-semibold mb-6 text-center">
+            Soy Empleada Doméstica
+          </h4>
+          <form id="workerForm" onsubmit="handleWorkerRegistration(event)">
+            <input
+              type="text"
+              id="workerName"
+              placeholder="Nombre Completo"
+              class="w-full p-3 mb-4 border rounded"
+              required
+            />
+            <input
+              type="email"
+              id="workerEmail"
+              placeholder="Correo Electrónico"
+              class="w-full p-3 mb-4 border rounded"
+              required
+            />
+            <input
+              type="tel"
+              id="workerPhone"
+              placeholder="Teléfono"
+              class="w-full p-3 mb-4 border rounded"
+              required
+            />
+            <input
+              type="hidden"
+              id="workerSpecialty"
+              value="limpieza"
+            />
+            <textarea
+              id="workerExperience"
+              placeholder="Experiencia y perfil"
+              class="w-full p-3 mb-4 border rounded"
+              rows="4"
+              required
+            ></textarea>
+            <button type="submit" class="btn-primary w-full">
+              Registrar como Empleada
+            </button>
+          </form>
+        </div>
+
+        <!-- Register as Client -->
+        <div class="card p-6">
+          <h4 class="text-xl font-semibold mb-6 text-center">Busco Servicio</h4>
+          <form id="clientForm" onsubmit="handleClientRegistration(event)">
+            <input
+              type="text"
+              id="clientName"
+              placeholder="Nombre Completo"
+              class="w-full p-3 mb-4 border rounded"
+              required
+            />
+            <input
+              type="email"
+              id="clientEmail"
+              placeholder="Correo Electrónico"
+              class="w-full p-3 mb-4 border rounded"
+              required
+            />
+            <input
+              type="tel"
+              id="clientPhone"
+              placeholder="Teléfono"
+              class="w-full p-3 mb-4 border rounded"
+              required
+            />
+            <input
+              type="hidden"
+              id="clientService"
+              value="limpieza"
+            />
+            <input
+              type="text"
+              id="clientLocation"
+              placeholder="Ubicación en Mendoza"
+              class="w-full p-3 mb-4 border rounded"
+              required
+            />
+            <button type="submit" class="btn-primary w-full">
+              Buscar Empleadas
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section id="how-it-works" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h3 class="text-3xl font-bold text-center mb-12 text-gray-800">
+        Cómo Funciona
+      </h3>
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <i class="fas fa-user-plus text-4xl text-primary mb-4"></i>
+          <h5 class="text-lg font-semibold mb-2">Regístrate</h5>
+          <p class="text-gray-600">Crea tu perfil en pocos pasos.</p>
+        </div>
+        <div class="text-center">
+          <i class="fas fa-search text-4xl text-secondary mb-4"></i>
+          <h5 class="text-lg font-semibold mb-2">Busca o Publica</h5>
+          <p class="text-gray-600">Encuentra empleadas ideales para limpieza.</p>
+        </div>
+        <div class="text-center">
+          <i class="fas fa-handshake text-4xl text-primary mb-4"></i>
+          <h5 class="text-lg font-semibold mb-2">Conecta</h5>
+          <p class="text-gray-600">Contacta directamente y negocia acuerdos.</p>
+        </div>
+        <div class="text-center">
+          <i class="fas fa-star text-4xl text-secondary mb-4"></i>
+          <h5 class="text-lg font-semibold mb-2">Califica</h5>
+          <p class="text-gray-600">Deja reseñas y construye confianza.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="py-16">
+    <div class="container mx-auto px-4 text-center">
+      <h3 class="text-3xl font-bold mb-6 text-gray-800">Mantente Informado</h3>
+      <p class="text-lg text-gray-600 mb-8">
+        Suscríbete y recibe actualizaciones sobre nuevos servicios y ofertas.
+      </p>
+      <form id="newsletterForm" onsubmit="handleNewsletter(event)" class="max-w-md mx-auto">
+        <input
+          type="email"
+          id="newsletterEmail"
+          placeholder="Tu correo electrónico"
+          class="w-full p-3 mb-4 border rounded"
+          required
+        />
+        <button type="submit" class="btn-primary w-full">Suscribirme</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center space-x-2 mb-4">
+            <div
+              class="w-8 h-8 bg-primary rounded-full flex items-center justify-center"
+            >
+              <i class="fas fa-home text-white"></i>
+            </div>
+            <h5 class="font-semibold">Servigo</h5>
+          </div>
+          <p>Conectando empleadas domésticas con jóvenes profesionales en Mendoza.</p>
+        </div>
+        <div>
+          <h6 class="font-semibold mb-4">Enlaces</h6>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-primary">Sobre Nosotros</a></li>
+            <li><a href="#" class="hover:text-primary">Política de Privacidad</a></li>
+            <li><a href="#" class="hover:text-primary">Términos de Servicio</a></li>
+          </ul>
+        </div>
+        <div>
+          <h6 class="font-semibold mb-4">Contacto</h6>
+          <p>Email: info@servigo.com</p>
+          <p>Tel: +54 261 123 4567</p>
+        </div>
+        <div>
+          <h6 class="font-semibold mb-4">Suscripción Súper Prof</h6>
+          <p class="text-sm">
+            Acceso premium para empleadas: $500 ARS/mes. Capacitación, beneficios y más.
+          </p>
+          <button class="btn-primary mt-2">¡Únete Ahora!</button>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-4 text-center">
+        <p>© 2023 Servigo. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Action Button -->
+  <div id="floatingButton" class="floating-action" onclick="scrollToTop()">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+    menuToggle.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+
+    // Scroll to top
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    // Show register section
+    function showRegisterSection() {
+      document.getElementById("register").scrollIntoView({ behavior: "smooth" });
+    }
+
+    // Handle worker registration
+    function handleWorkerRegistration(event) {
+      event.preventDefault();
+      const name = document.getElementById("workerName").value;
+      const email = document.getElementById("workerEmail").value;
+      const phone = document.getElementById("workerPhone").value;
+      const specialty = "limpieza";
+      const experience = document.getElementById("workerExperience").value;
+
+      alert(
+        `¡Gracias, ${name}! Tu perfil como ${specialty} ha sido registrado. Te contactaremos pronto con oportunidades.`
+      );
+      // Aquí se enviaría la información al backend
+    }
+
+    // Handle client registration
+    function handleClientRegistration(event) {
+      event.preventDefault();
+      const name = document.getElementById("clientName").value;
+      const email = document.getElementById("clientEmail").value;
+      const phone = document.getElementById("clientPhone").value;
+      const service = "limpieza";
+      const location = document.getElementById("clientLocation").value;
+
+      alert(
+        `¡Hola, ${name}! Buscando empleadas para ${service} en ${location}. Te recomendaremos profesionales pronto.`
+      );
+      // Aquí se enviaría la información al backend
+    }
+
+    // Handle newsletter
+    function handleNewsletter(event) {
+      event.preventDefault();
+      const email = document.getElementById("newsletterEmail").value;
+      alert(`¡Suscrito! Recibirás novedades en ${email}.`);
+      // Aquí se enviaría la información al backend
+    }
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute("href")).scrollIntoView({
+          behavior: "smooth",
+        });
+      });
+    });
+
+    // Show floating button after scroll
+    window.addEventListener("scroll", () => {
+      if (window.pageYOffset > 300) {
+        document.getElementById("floatingButton").style.display = "flex";
+      } else {
+        document.getElementById("floatingButton").style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>
